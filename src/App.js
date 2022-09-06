@@ -1,25 +1,27 @@
-import logo from './logo.svg';
+import {React, useState} from 'react';
+import List from './components/List';
 import './App.css';
 
-function App() {
+
+
+export default function App() {
+  const [inputText, setInputText] = useState("");
+  let inputHandler = (e) => {
+    var lowerCase = e.target.value.toLowerCase();
+    setInputText(lowerCase);
+  };
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="main">
+      <h1>Simple Search App</h1>
+      <div className='search-box'>
+        <input id='input-field' onChange={inputHandler} className='search'/><br />
+      </div>
+      <List input={inputText}/>
     </div>
+
   );
 }
 
-export default App;
+
+
